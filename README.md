@@ -46,12 +46,21 @@ Om mange utviklere pusher kode til samme branch vil det øke sansynligheten for 
 
 ### Del 2: CI
 Oppgave 1:
-Funker
+Workflow kjører ved pull og push til master
 
 Oppgave 2:
-
+ - Enhetstester failet (gjordt)
+ - Fikset enhetstester (Godkjent i github actions) + pipelines
+ - Workflowen kompilerer javakoden og kjører enhetstester på hver eneste push, *uavhengig av branch*
 
 Oppgave 3:
+Branch protection og status sjekker - Beskriv hva sensor må gjøre for å konfigurere sin fork på en slik måte
+at
+
+* Ingen kan pushe kode direkte på main branch
+* Kode kan merges til main branch ved å lage en Pull request med minst en godkjenning
+* Kode kan merges til main bare når feature branchen som pull requesten er basert på, er verifisert av GitHub Actions.
+
 
 ### Del 3: Docker
 
