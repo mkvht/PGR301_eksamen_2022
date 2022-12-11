@@ -5,12 +5,12 @@ name: CI pipeline
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ master ]
 #Runs workflow on push to main branch
     paths-ignore:
       - '**/README.md'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 #Runs workflow on pull from main branch
     paths-ignore:
       - '**/README.md'
