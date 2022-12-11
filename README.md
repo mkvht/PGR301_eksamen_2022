@@ -45,7 +45,13 @@ Om mange utviklere pusher kode til samme branch vil det øke sansynligheten for 
 <br>
 
 ### Del 2: CI
+Oppgave 1:
+Funker
 
+Oppgave 2:
+
+
+Oppgave 3:
 
 ### Del 3: Docker
 

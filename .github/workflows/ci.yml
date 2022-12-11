@@ -4,6 +4,17 @@
 name: CI pipeline
 on:
   workflow_dispatch:
+  push:
+    branches: [ main ]
+#Runs workflow on push to main branch
+    paths-ignore:
+      - '**/README.md'
+  pull_request:
+    branches: [ main ]
+#Runs workflow on pull from main branch
+    paths-ignore:
+      - '**/README.md'
+
 
 jobs:
   build:
@@ -18,4 +29,4 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn --no-transfer-progress -B compile --file pom.xml
+        run: mvn -B package --file pom.xml
