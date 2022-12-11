@@ -35,3 +35,5 @@ target/
 target
 
 checklist.md
+
+.vscode/
