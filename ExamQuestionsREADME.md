@@ -303,8 +303,7 @@ Det er andre utfordringer med denne flyten også; Workflowen kjører "ok" selv o
 
 ### Oppgave 3 
 
-Branch protection og status sjekker - Beskriv hva sensor må gjøre for å konfigurere sin fork på en slik måte
-at
+Branch protection og status sjekker - Beskriv hva sensor må gjøre for å konfigurere sin fork på en slik måte at
 
 * Ingen kan pushe kode direkte på main branch
 * Kode kan merges til main branch ved å lage en Pull request med minst en godkjenning

@@ -1,5 +1,7 @@
 # Eksamen 2022
 ## DevOps i Skyen
+[![CI pipeline](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/ci.yml/badge.svg)](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/ci.yml)
+
 
 
 ### Del 1: DevOps-prinsipper
@@ -54,15 +56,30 @@ Oppgave 2:
  - Workflowen kompilerer javakoden og kjører enhetstester på hver eneste push, *uavhengig av branch*
 
 Oppgave 3:
-Branch protection og status sjekker - Beskriv hva sensor må gjøre for å konfigurere sin fork på en slik måte
-at
+Branch protection og status sjekker - Beskriv hva sensor må gjøre for å konfigurere sin fork på en slik måte at
 
 * Ingen kan pushe kode direkte på main branch
 * Kode kan merges til main branch ved å lage en Pull request med minst en godkjenning
 * Kode kan merges til main bare når feature branchen som pull requesten er basert på, er verifisert av GitHub Actions.
-
+TODO:
 
 ### Del 3: Docker
+Oppgave 1:
+Beskriv hva du må gjøre for å få workflow til å fungere med din DockerHub konto? Hvorfor feiler workflowen? 
+<br>
+
+Oppgave 2:
+<br>
+FROM adoptopenjdk/openjdk 8 endret
+Opprydding i DockerFile utført
+Opprydding i docker.yml
+
+Oppgave 3:
+<br>
+Eget ECR repo opprettet med navn 1004
+```docker.yml``` pusher til Amazon ECR
+
+TODO:
 
 
 ### Del 4: Metrics, overvåkning og alarmer
