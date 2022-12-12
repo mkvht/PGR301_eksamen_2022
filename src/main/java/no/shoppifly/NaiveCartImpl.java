@@ -7,7 +7,10 @@ import java.util.*;
 @Component
 class NaiveCartImpl implements CartService {
 
-    private final Map<String, Cart> shoppingCarts = new HashMap<>();
+
+    public int cartsCheckedOut = 0;
+
+    public Map<String, Cart> shoppingCarts = new HashMap<>();
 
     @Override
     public Cart getCart(String id) {
@@ -26,12 +29,17 @@ class NaiveCartImpl implements CartService {
     @Override
     public String checkout(Cart cart) {
         shoppingCarts.remove(cart.getId());
+        cartsCheckedOut++;
         return UUID.randomUUID().toString();
     }
 
     @Override
     public List<String> getAllsCarts() {
         return new ArrayList<>(shoppingCarts.keySet());
+    }
+    
+    public int cartsCheckedOutFunction() {
+        return cartsCheckedOut;
     }
 
     // @author Jim; I'm so proud of this one, took me one week to figure out !!!

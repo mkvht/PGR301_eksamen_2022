@@ -119,6 +119,17 @@ For at sensor skal kunne pushe til sitt eget ECR fra egen fork:
 
 
 ### **Del 4:** Metrics, overvåkning og alarmer
+Gjør nødvendige endringer i ```pom.xml``` - og koden, slik at applikasjonen kan levere Metrics til CloudWatch ved hjelp av Spring Boot Micrometer.
 
+Konfigurer applikasjonen til å bruke ditt eget ClodWatch Metrics Namespace - ditt Kandidatnummer. 
+
+Slettet hele test mappen(gjordt)
+
+Endre Javakoden slik at den rapporterer følgende Metrics til CloudWatch
+
+* "carts" -  Antall handlekurver på et gitt tidspunkt i tid - verdien kan gå opp og ned ettersom kunder sjekker ut handlekurver og nye blir laget.  
+* "cartsvalue" - Total sum med penger i handlekurver på et gitt tidspunkt i tid - verdien kan gå opp og ned ettersom kunder sjekker ut handlekurver og nye blir laget.
+* "checkouts" - Totalt antall  handlevogner er blitt sjekket ut
+* "checkout_latency" - Gjennomsnittlig responstid for Checkout metoden i Controller-klassen.
 
 ### **Del 5:** Terraform og CloudWatch Dashboards
