@@ -2,7 +2,7 @@
 ## DevOps i Skyen
 [![CI pipeline](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/ci.yml/badge.svg)](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/ci.yml)
 [![Docker build](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/docker.yml/badge.svg)](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/docker.yml)
-
+[![Terraform CloudWatch](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/cloudwatch_dashboard.yml/badge.svg)](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/cloudwatch_dashboard.yml)
 
 ### **Del 1:** DevOps-prinsipper
 ***[1.1] Hva er utfordringene med dagens systemutviklingsprosess - og hvordan vil innføring av DevOps kunne være med på å løse disse? Hvilke DevOps prinsipper blir brutt?***
@@ -41,7 +41,7 @@ Når et team jobber med både "dev" og "ops" kan man unngå "flaskehalser". Man 
 
 ***[1.4] Å release kode ofte kan også by på utfordringer. Beskriv hvilke- og hvordan vi kan bruke DevOps prinsipper til å redusere eller fjerne risiko ved hyppige leveraner.***
 
-Om mange utviklere pusher kode til samme branch vil det øke sansynligheten for merge-conflicts som tar tid og nøyaktighet å løse. 
+Om mange utviklere pusher kode til samme branch vil det øke sansynligheten for merge-conflicts som tar tid og nøyaktighet å løse. Derfor er det ofte brukt mindre hyppige leveranser der man jobber i mange forskjellige forker. Dette gjør også at utviklere kan gjøre feil og må gå tilbake til tidligere versjone. En måte DevOps prinsippene hindrer dette er å sette safeguards på main branchen slikt at ikke alle alltid kan merge feature-bancher mot main. Dette kan for eksempel være branch-protection, som kan gå gjennom en sjekk liste med requirements før man kan gjøre en merge. Dette minsker sansynligheten for at man merger noe inn i main som kanskje ikke fungerer, kvalifiserer eller ikke består tester. 
 
 <br>
 <br>
@@ -119,17 +119,37 @@ For at sensor skal kunne pushe til sitt eget ECR fra egen fork:
 
 
 ### **Del 4:** Metrics, overvåkning og alarmer
-Gjør nødvendige endringer i ```pom.xml``` - og koden, slik at applikasjonen kan levere Metrics til CloudWatch ved hjelp av Spring Boot Micrometer.
+Gjør nødvendige endringer i ```pom.xml``` - og koden, slik at applikasjonen kan levere Metrics til CloudWatch ved hjelp av Spring Boot Micrometer (gjordt)
 
-Konfigurer applikasjonen til å bruke ditt eget ClodWatch Metrics Namespace - ditt Kandidatnummer. 
+Konfigurer applikasjonen til å bruke ditt eget ClodWatch Metrics Namespace - ditt Kandidatnummer. (gjordt)
 
 Slettet hele test mappen(gjordt)
 
-Endre Javakoden slik at den rapporterer følgende Metrics til CloudWatch
-
-* "carts" -  Antall handlekurver på et gitt tidspunkt i tid - verdien kan gå opp og ned ettersom kunder sjekker ut handlekurver og nye blir laget.  
-* "cartsvalue" - Total sum med penger i handlekurver på et gitt tidspunkt i tid - verdien kan gå opp og ned ettersom kunder sjekker ut handlekurver og nye blir laget.
-* "checkouts" - Totalt antall  handlevogner er blitt sjekket ut
-* "checkout_latency" - Gjennomsnittlig responstid for Checkout metoden i Controller-klassen.
+Endre Javakoden slik at den rapporterer følgende Metrics til CloudWatch:
+* "carts" (done)
+* "cartsvalue" (done)
+* "checkouts" (done)
+* "checkout_latency" (done)
 
 ### **Del 5:** Terraform og CloudWatch Dashboards
+
+**Oppgave 1**
+Terraform forsøker å lage en s3 bucket uten at det eksisterer en terraform.state fil. Derfor vil ikke terraform skjønne at bucketen allerede eksisterer.
+Lagde en terraform.state fil og kjørte
+```
+$ terraform import aws_s3_bucket.analytics-bucket analytics-1004
+
+$ terraform apply
+```
+
+**Oppgave 2**
+Workflow filen ```cloudwatch_dashboard.yml``` filen endret slik at apply bare bli kjørt på push mot main branch, og terraform plan på når det lages en Pull request (done)
+
+**Oppgave 3**
+* CloudWatch Dashboard med *fire widgets* (done)
+* Antall handlekurver på et gitt tidspunkt i tid (done)
+* Total sum med penger i handlekurver på et gitt tidspunkt i tid (done)
+* Gjennomsnittlig responstid for Checkout metoden i Controller-klassen. (done)
+
+### Alarmer
+(fullført)
