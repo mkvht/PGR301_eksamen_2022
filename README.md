@@ -1,7 +1,7 @@
 # Eksamen 2022
 ## DevOps i Skyen
 [![CI pipeline](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/ci.yml/badge.svg)](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/ci.yml)
-
+[![Docker build](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/docker.yml/badge.svg)](https://github.com/mkvht/PGR301_eksamen_2022/actions/workflows/docker.yml)
 
 
 ### **Del 1:** DevOps-prinsipper
@@ -97,7 +97,6 @@ Opprydding i ```docker.yml```
 <br>
 Eget ECR repo opprettet med navn 1004 <br>
 ```docker.yml``` pusher til Amazon ECR
- - Bør være satt opp riktig men funker ikke helt...
 <br>
 
 For at sensor skal kunne pushe til sitt eget ECR fra egen fork:
