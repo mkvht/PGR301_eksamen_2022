@@ -10,5 +10,4 @@ terraform {
     key = "state-file/terraform.state"
     region = "eu-west-1"
   }
-
 }
