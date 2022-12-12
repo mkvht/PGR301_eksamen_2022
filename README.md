@@ -4,7 +4,7 @@
 
 
 
-### Del 1: DevOps-prinsipper
+### **Del 1:** DevOps-prinsipper
 ***[1.1] Hva er utfordringene med dagens systemutviklingsprosess - og hvordan vil innføring av DevOps kunne være med på å løse disse? Hvilke DevOps prinsipper blir brutt?***
 
 Prinsippene til DevOps modellen er:
@@ -46,43 +46,59 @@ Om mange utviklere pusher kode til samme branch vil det øke sansynligheten for 
 <br>
 <br>
 
-### Del 2: CI
-Oppgave 1:
-Workflow kjører ved pull og push til master
+### **Del 2:** CI
+**Oppgave 1:**
+Workflow kjører ved pull og push til master (gjordt)
 
-Oppgave 2:
+**Oppgave 2:**
  - Enhetstester failet (gjordt)
- - Fikset enhetstester (Godkjent i github actions) + pipelines
- - Workflowen kompilerer javakoden og kjører enhetstester på hver eneste push, *uavhengig av branch*
+ - Fikset enhetstester (Godkjent i github actions) + pipelines består
+ - Workflowen kompilerer javakoden og kjører enhetstester på hver eneste push, *uavhengig av branch* (gjordt)
 
-Oppgave 3:
-Branch protection og status sjekker - Beskriv hva sensor må gjøre for å konfigurere sin fork på en slik måte at
+**Oppgave 3:**
 
-* Ingen kan pushe kode direkte på main branch
-* Kode kan merges til main branch ved å lage en Pull request med minst en godkjenning
-* Kode kan merges til main bare når feature branchen som pull requesten er basert på, er verifisert av GitHub Actions.
-TODO:
+For å konfigurere branch protection i GitHub gjør vi følgende:
+1. Naviger til hovedsiden av repositoriet det gjelder
+2. Gå til repository *settings*
+3. I venstre side-meny, under *Code and automation* velger vi *branches* og trykker derretter på *"Add branch protection rule"* og kommer til siden *Branch protection rule*
+4. I feltet *"Branch name pattern"* skriver man inn **navnet på den branchen** man ønsker å beskytte. (For eksempel "main" eller "master")
+5. Derretter får man alternativer man kan velge for beskyttelsen.
+    * for eksempel *Require a pull request before merging* og *Require status checks to pass before merging*
 
-### Del 3: Docker
-Oppgave 1:
-Beskriv hva du må gjøre for å få workflow til å fungere med din DockerHub konto? Hvorfor feiler workflowen? 
+For å hindre direkte push til main/master (i dette prosjektet er det master) finnes det flere fremgangsmetoder:
+* Under *Branch protection rule* siden finnes det et alternativ som heter *"lock branch"*. *Lock branch* gjør branchen til en read-only branch hvor man ikke for lov til å pushe noe inn i branchen.
+    * Man kan lage spesifike regler for brukere der de kan ha tillatelse til å "bypass branch protection" slikt at for eksempel admin kan gjøre en merge.
+* En annen måte er å velge alternativet *Require a pull request before merging* sammen med underalternativet *Require Approvals*. Dette gjør at alle commits fra en ikke-beskyttet branch mot den beskyttede branchen må gjennom en code review før de kan merges til den beskyttedet branchen. I tillegg kan man velge hvor mange godkjenninger som må til før pushet går igjennom)
+    * Man kan også benytte seg av alternativet *Require review from Code Owners* som gjør at eieren av koden må godkjenne pushet før det går gjennom.
+
+For å hindre merge til main/master fra feature branchen uten at den er verifisert av GitHub Actions kan vi ruke denne metoden.
+* Under *Branch protection rule* siden velger vi alternativet *Require status checks to pass before merging*.
+    * Denne reglen gjør at GitHub Actions build må bestå før fature branchen kan merge til main/master.
+
 <br>
 
-Oppgave 2:
+### **Del 3:** Docker
+**Oppgave 1:**
+Beskriv hva du må gjøre for å få workflow til å fungere med din DockerHub konto? Hvorfor feiler workflowen? 
+<br>
+For å få workflowen til å fungere må man legge til GitHub secrets som docker.yml filen leser ut. Secret infoen nødvendig er brukernavn og token fra dockerhub kontoen.
+Årsaken til at workflowen failer uten brukernavnet og tokenet til DokerHub kontoen er fordi man må være verifisert og ha tillatelse til å koble seg til DockerHub. Dette gjelder selfølgelig ikke bare når jeg som bruker vil ha tilgang men også når andre porgrammer trenger tilgang.
+
+**Oppgave 2:**
 <br>
 FROM adoptopenjdk/openjdk 8 endret
 Opprydding i DockerFile utført
 Opprydding i docker.yml
 
-Oppgave 3:
+**Oppgave 3:**
 <br>
-Eget ECR repo opprettet med navn 1004
+Eget ECR repo opprettet med navn 1004 <br>
 ```docker.yml``` pusher til Amazon ECR
 
 TODO:
 
 
-### Del 4: Metrics, overvåkning og alarmer
+### **Del 4:** Metrics, overvåkning og alarmer
 
 
-### Del 5: Terraform og CloudWatch Dashboards
+### **Del 5:** Terraform og CloudWatch Dashboards
