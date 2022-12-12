@@ -55,6 +55,7 @@ Workflow kjører ved pull og push til master (gjordt)
  - Fikset enhetstester (Godkjent i github actions) + pipelines består
  - Workflowen kompilerer javakoden og kjører enhetstester på hver eneste push, *uavhengig av branch* (gjordt)
 
+Lagt til GitHub Actions badge i README.md
 **Oppgave 3:**
 
 For å konfigurere branch protection i GitHub gjør vi følgende:
@@ -79,16 +80,18 @@ For å hindre merge til main/master fra feature branchen uten at den er verifise
 
 ### **Del 3:** Docker
 **Oppgave 1:**
+
 Beskriv hva du må gjøre for å få workflow til å fungere med din DockerHub konto? Hvorfor feiler workflowen? 
 <br>
-For å få workflowen til å fungere må man legge til GitHub secrets som docker.yml filen leser ut. Secret infoen nødvendig er brukernavn og token fra dockerhub kontoen.
+
+For å få workflowen til å fungere må man legge til *GitHub secrets* som ```docker.yml``` filen leser ut. Secret infoen nødvendig er brukernavn og token fra dockerhub kontoen.
 Årsaken til at workflowen failer uten brukernavnet og tokenet til DokerHub kontoen er fordi man må være verifisert og ha tillatelse til å koble seg til DockerHub. Dette gjelder selfølgelig ikke bare når jeg som bruker vil ha tilgang men også når andre porgrammer trenger tilgang.
 
 **Oppgave 2:**
 <br>
 FROM adoptopenjdk/openjdk 8 endret
-Opprydding i DockerFile utført
-Opprydding i docker.yml
+Opprydding i ```DockerFile``` utført
+Opprydding i ```docker.yml```
 
 **Oppgave 3:**
 <br>
