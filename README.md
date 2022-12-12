@@ -97,8 +97,26 @@ Opprydding i ```docker.yml```
 <br>
 Eget ECR repo opprettet med navn 1004 <br>
 ```docker.yml``` pusher til Amazon ECR
+ - Bør være satt opp riktig men funker ikke helt...
+<br>
 
-TODO:
+For at sensor skal kunne pushe til sitt eget ECR fra egen fork:
+
+1. Fra Console Home i AWC finn *IAM* (Identity and Access Management).
+2. I venste side-meny gå til *users* og finn din bruker.
+3. Gå til tabben *security credentials* og trykk på knappen *Create access key*. Lagre filen som blir generert her. Om du mister dette finner du det ikke igjen og må starte på nytt.
+4. Inne i GitHub prosjektet går vi til *settings*
+5. I venstre side-meny velger vi *secrets* og derretter *Actions*
+6. Trykk på *New repository secret* (vi skal opprette 2).
+    * Lag en secret med navnet: **AWS_ACCESS_KEY_ID**
+        * Lim inn din **Access key ID** (Ligger i IAM-filen du lastet ned tidligere)
+    * Lag en secret med navnet: **AWS_SECRET_ACCESS_KEY**
+        * Lim inn din **Secret access key** (Ligger i IAM-filen du lastet ned tidligere)
+7. Inne i ```.github/workflows ``` i repoet finner du filen: ```docker.yml```
+    * Finn *REPO env* og endre til egen repo adresse.
+        * REPO: 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1004 (1004 må byttes ut med ditt repo navn)
+
+
 
 
 ### **Del 4:** Metrics, overvåkning og alarmer
