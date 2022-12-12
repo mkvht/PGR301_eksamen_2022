@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
   build_docker_image:
-    name: Puch Docker image to ECR repository
+    name: Push Docker image to ECR repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
